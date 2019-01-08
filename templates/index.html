@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <meta http-equiv="Pragma" content="no-cache" />
+      <meta http-equiv="Expires" content="-1" />
+      <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+
+      <title>OpenJSCAD.org</title>
+      <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-png" />
+      <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+      <link rel="stylesheet" href="/static/css/openjscad.css" type="text/css">
+      <script src="/static/js/index.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <img src="/static/images/title.png">
+      <div id="error_div"></div>
+    </div>
+
+<!-- 菜单 -->
+    <div id="menu">
+      <img id="menuHandle" src="/static/images/menuHandleVLIn.png">
+      <nav>
+        <div id="menuVersion"></div>
+        <p>
+        <table class="info">
+          <tr><td class="infoView" colspan=2>编辑栏快捷键</td></tr>
+          <tr><td align="right" class="infoOperation">渲染代码</td><td class="infoKey">: F5 或 SHIFT+Enter</td></tr>
+          <tr><td align="right" class="infoOperation">保存到缓存</td><td class="infoKey">: CTRL + S</td></tr>
+          <tr><td align="right" class="infoOperation">从缓存加载</td><td class="infoKey">: CTRL + L</td></tr>
+          <tr><td align="right" class="infoOperation">清除缓存</td><td class="infoKey">: CTRL + SHIFT + \</td></tr>
+          <tr><td align="right" class="infoOperation">下载代码</td><td class="infoKey">: CTRL + SHIFT + S</td></tr>
+          <tr><td align="right" class="infoOperation">重置视图</td><td class="infoKey">: CTRL + Enter</td></tr>
+          <tr><td class="infoView" colspan=2>3D视图 鼠标控制</td></tr>
+          <tr><td align="right" class="infoOperation">旋转XZ轴</td><td class="infoKey">: 左键</td></tr>
+          <tr><td align="right" class="infoOperation">旋转XY轴</td><td class="infoKey">: 右键 或 ALT + 左键</td></tr>
+          <tr><td align="right" class="infoOperation">平&nbsp;&nbsp;&nbsp;移</td><td class="infoKey">: 中键 或 SHIFT + 左键</td></tr>
+          <tr><td align="right" class="infoOperation">缩&nbsp;&nbsp;&nbsp;放</td><td class="infoKey">: 滚轮 或 CTRL + 左键</td></tr>
+        </table>
+
+        <table class="info">
+            <tr><td class="infoView" colspan=2><b>支持的文件格式</b></td></tr>
+            <tr><td align="right"><b>jscad</b></td><td><a target="_blank" rel="noopener" href="https://openjscad.org/dokuwiki/doku.php">: OpenJSCAD</a> (导入/输出)</td></tr>
+            <tr><td align="right"><b>scad</b></td><td><a target="_blank" rel="noopener" href="http://openscad.org">: OpenSCAD</a> (导入)</td></tr>
+            <tr><td align="right"><b>stl</b></td><td><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/STL_(file_format)">: STL format</a> (导入/输出)</td></tr>
+            <tr><td align="right"><b>amf</b></td><td><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Additive_Manufacturing_File_Format">: AMF format</a> (导入/输出)</td></tr>
+            <tr><td align="right"><b>dxf</b></td><td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/AutoCAD_DXF">: DXF format</a> (导入/输出)</td></tr>
+            <tr><td align="right"><b>x3d</b></td><td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/X3D">: X3D format</a> (输出)</td></tr>
+            <tr><td align="right"><b>svg</b></td><td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">: SVG format</a> (导入/输出)</td></tr>
+        </table>
+
+        <p>
+        <a class="navlink" href="https://openjscad.org/dokuwiki/doku.php" target="_blank" rel="noopener">用户指南/文档 <img src="/static/images/externalLink.png" style="externalLink"></a>
+        </p>
+
+        <div id="examplesTitle" class="navlink"><a href='#' onclick='return false'>模型示例</a></div>
+        <div id="examples"></div>
+
+        <p><a class="navlink about" href="#">关于</a></p>
+      </nav>
+    </div>
+<!-- /菜单结束 -->
+
+<!-- 关于 -->
+    <div id="about">
+      <img src="/static/images/title.png">
+      <div id="aboutVersion" ></div>
+      <p>
+        <h4></h4>
+
+        <a href="https://github.com/jscad/OpenJSCAD.org" target="_blank" rel="noopener">GitHub: OpenJSCAD</a>
+      </p>
+      <p>
+        <br/><a class="okButton" href='#'> OK </a>
+      </p>
+    </div>
+<!-- /关于结束 -->
+
+<!-- 编辑栏 -->
+    <div id="editFrame">
+      <div>
+        <img id="editHandle" src="/static/images/editHandleIn.png">
+      </div>
+      <div id="editor">
+        function main() {
+           return union(
+              difference(
+                 cube({size: 3, center: true}),
+                 sphere({r:2, center: true})
+              ),
+              intersection(
+                  sphere({r: 1.3, center: true}),
+                  cube({size: 2.1, center: true})
+              )
+           ).translate([0,0,1.5]).scale(10);
+        }
+      </div>
+    </div>
+<!-- /编辑栏结束 -->
+
+<!-- 模型视窗 -->
+    <div oncontextmenu="return false;" id="viewerContext"></div> <!-- 单击鼠标右键时避免弹出 -->
+
+<!-- 参数 -->
+    <div id="parametersdiv"></div>
+    <div id="selectdiv"></div>
+
+<!-- 状态信息, 下载, 拖放 -->
+    <div id="tail">
+      <div id="statusdiv"></div>
+      <div id="filedropzone">
+        <div id="filedropzone_empty">
+        </div>
+        <div id="filedropzone_input">
+          <p>
+            <label class="input-control">添加支持的文件: <input type="file" id="files-input" accept="*/*" multiple="multiple"></label>
+          </p>
+        </div>
+        <div id="filedropzone_filled">
+          <span id="currentfile">...</span>
+          <div id="filebuttons">
+            <button id="getstlbutton" style="display:none" onclick="getStl();">下载 STL 文件</button>
+            <button id="reloadAllFiles">刷新</button>
+            <label for="autoreload">自动刷新</label><input type="checkbox" name="autoreload" value="" id="autoreload">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+    </div>
+  </body>
+</html>
