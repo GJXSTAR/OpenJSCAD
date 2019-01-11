@@ -31,4 +31,4 @@ def login_html():
 
 
 if __name__ == '__main__':
-    app.run('127.0.0.1')
+    app.run('101.132.142.102')
