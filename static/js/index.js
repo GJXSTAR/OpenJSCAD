@@ -102507,7 +102507,7 @@ function init() {
   var header = document.getElementById('header');
   var menu = document.getElementById('menu');
   var tail = document.getElementById('tail');
-  var footer = document.getElementById('footer');
+  //var footer = document.getElementById('footer');
   var editFrame = document.getElementById('editFrame');
 
   //createOptions()
@@ -102678,10 +102678,10 @@ function init() {
   }
 
   // version number displays
-  if (footer) {
-    var footerContent = '<a target=_blank href="https://github.com/jscad/OpenJSCAD.org">GitHub: OpenJSCAD</a>';
-    document.getElementById('footer').innerHTML = footerContent;
-  }
+  //if (footer) {
+    //var footerContent = '<a target=_blank href="https://github.com/jscad/OpenJSCAD.org">GitHub: OpenJSCAD</a> &nbsp;&nbsp;&nbsp; <a class="okButton" href="/minimal"> 小预览窗 </a>  &nbsp;&nbsp;&nbsp; <a class="okButton" href="/options"> 大预览窗 </a>  &nbsp;&nbsp;&nbsp; <a class="okButton" href="/converter"> STL 转 SCAD </a>';
+    //document.getElementById('footer').innerHTML = footerContent;
+  //}
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {

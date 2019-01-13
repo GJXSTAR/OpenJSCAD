@@ -17,18 +17,25 @@ def index():
 
 
 @app.route('/options')
-def register_html():
+def options():
     if DEBUG:
         print('options')
     return render_template('options.html')
 
 
 @app.route('/minimal')
-def login_html():
+def minimal():
     if DEBUG:
         print('minimal')
     return render_template('minimal.html')
 
 
+@app.route('/converter')
+def converter():
+    if DEBUG:
+        print('converter')
+    return render_template('converter.html')
+
+
 if __name__ == '__main__':
-    app.run('101.132.142.102')
+    app.run('127.0.0.1')
