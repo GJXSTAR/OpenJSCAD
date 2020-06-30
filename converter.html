@@ -1,0 +1,48 @@
+---
+css: [normalize.css]
+js: [jquery-1.4.2.js, binaryReader.js, converter.js]
+---
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>STL TO OpenSCAD转换器</title>
+    <link rel="shortcut icon" href="{{ site.baseUrl }}/static/images/favicon.png" type="image/x-png" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseUrl }}/static/css/normalize.css" />
+
+    <script type="text/javascript" src="{{ site.baseUrl }}/static/js/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="{{ site.baseUrl }}/static/js/binaryReader.js"></script>
+    <script type="text/javascript" src="{{ site.baseUrl }}/static/js/converter.js"></script>
+
+</head>
+
+<body>
+    <h1>STL 转换 OpenSCAD</h1>
+    <div class="agile-its">
+        <div class="w3layouts">
+            <div class="agileinfo">
+                <input type="submit" value="选择文件...">
+                <input type="file" name="file" id="files">
+            </div>
+            <div id="filename"></div>
+            <div id="percent"></div>
+            <div id="msg">
+                <span id="error"></span>
+                <span id="conversion"></span>
+                <span id="result"></span>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <a class="submit" href="blob:https://fiddle.jshell.net/9d74bc39-b0c6-44bf-b34f-8cf5e12554dd" download="FromSTL.SCAD">下载文件</a>
+
+		</div>
+    </div>
+
+</body>
+
+</html>
